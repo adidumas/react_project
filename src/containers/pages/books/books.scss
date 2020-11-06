@@ -1,0 +1,96 @@
+.book-item {
+  border: 1px solid #d8cfcf;
+  padding: 10px;
+  margin: 15px;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+
+  .title {
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  img {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .categories, .authors {
+    h4, p {
+      display: inline;
+    }
+    h4 {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+
+  .authors {
+
+  }
+}
+
+.modal-content {
+  .modal-body {
+    img {
+      float: left;
+      margin-right: 10px;
+    }
+    .categories, .authors {
+      h4, p {
+        display: inline;
+      }
+      h4 {
+        font-size: 16px;
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.list {
+  .list-view {
+    display: block;
+  }
+  .grid-view {
+    display: none;
+  }
+}
+
+.grid {
+  .list-view {
+    display: none;
+  }
+  .grid-view {
+    display: block;
+  }
+
+  .book-item {
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+
+    .short-description {
+      display: none;
+    }
+
+    img {
+      margin: 0 auto;
+      display: block;
+      float: none;
+    }
+  }
+}
+
+.view-switch {
+  >p {
+    display: inline;
+    margin-right: 15px;
+  }
+}
+
+.list-view, .grid-view {
+  text-align: center;
+}

@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+File structure: (inside src folder)
+1). actions folder :
+    - in this folder we have the actions for redux
+    - we have a file called book.js. If the app was bigger, other actions would be present here : users.js, products.js, etc...
+    - inside book.js we have an API function that gets the books from the server (getBooksAPI) and inside it we have a Promise to solve the request
+    - if the app was bigger, here we would have also the POST, PUT, DELETE functions (createBooksAPI, editBooksAPI, deleteBooksAPI)
+    - besides the API function, we also have other actions: FILTER_BOOKS (for the search), 
+            SET_FILTER (for setting the title or the description as the filtered criteria) and SET_BOOK (for when the user is selecting a book)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2). containers folder:
+    - in this folder we have the components of the app
+    - in "pages" folder, we have a folder for each page of the app. Because the app is small, we only have the "books" page. If the app was bigger,
+        in here we would had "users" folder, "products" folder, etc...
+    - inside the "book" folder, we have the main component "book.js" and it's corespondent scss file for the styling. Each page will have it's own scss file
+    - each page has a "components" folder. In here we have the components of the respective page (for books we have : bookItem, bookList, bookModal, bookSearch)
+    - App.js : is the main component. If the app was bigger, here we would have the Router, Link, Route, Switch from "react-router-dom" for the routing
 
-## Available Scripts
+3). reducers folder:
+    - in this folder we have the reducers for REDUX
+    - if the app was bigger, we would have more reducers here
+    - in book.js reducer, we declare the initial state + the action types : GET_BOOKS, FILTER_BOOKS, SET_FILTER, SET_BOOK
+    
+4). utils folder:
+    - here we simply create an instance of axios for the API request, so we prepare the baseUrl + headers
+    
+5). rootReducers.js:
+    - we are using combineReducers, because if the apps was bigger this is how you would include all the reducers
 
-In the project directory, you can run:
+6). Using REDUX in components:
+    - const mapStateToProps = (state) => ({
+          books: state.book.books,
+          filteredBooks: state.book.filteredBooks
+      })  ------> mapping the state to the props
+    - const mapDispatchToProps = (dispatch) => ({
+          getBooks: () => dispatch(getBooksAPI()),
+      }) ------> mapping the functions
+    - export default connect(mapStateToProps, mapDispatchToProps)(Books); ------> connecting all to the component 
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+7). List/Grid + dark mode/ light mode is done by adding a class to the container and from there it's only scss styling

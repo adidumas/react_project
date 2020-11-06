@@ -1,0 +1,43 @@
+.dark-mode {
+  &.wrapper {
+    background: black;
+
+    p, h3 {
+      color: gray;
+    }
+
+    .modal-content {
+      background-color: black;
+    }
+  }
+}
+
+.nav-content {
+  background: #dedede;
+  padding: 5px;
+  overflow: hidden;
+
+  >h3 {
+    text-align: center;
+    font-size: 22px;
+    float: left;
+    margin-top: 8px;
+    margin-left: 15px;
+  }
+
+  .view-switch {
+    float: right;
+
+    >p {
+      display: inline-block;
+      margin-top: 2px;
+      vertical-align: top;
+    }
+  }
+}
+
+.main-container {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
